@@ -8,8 +8,10 @@
 
   <ItemGroup>
     <Folder Include="Entities\" />
-    <Folder Include="Result\" />
-    <Folder Include="Repository\" />
+    <Folder Include="Interfeces\" />
+    <Folder Include="Settings\" />
+    <Folder Include="Service\" />
+    <Folder Include="Response\" />
   </ItemGroup>
 
 </Project>

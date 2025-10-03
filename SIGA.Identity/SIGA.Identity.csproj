@@ -7,9 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Entities\" />
-    <Folder Include="Result\" />
-    <Folder Include="Repository\" />
+    <Folder Include="Enum\" />
+    <Folder Include="Helper\" />
+    <Folder Include="Seeds\" />
+    <Folder Include="Services\" />
+    <Folder Include="Register\" />
   </ItemGroup>
 
 </Project>
