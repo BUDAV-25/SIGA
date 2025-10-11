@@ -18,4 +18,19 @@
     <ProjectReference Include="..\SIGA.IOC\SIGA.IOC.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Areas\Admin\Gestion estudiantes\" />
+    <Folder Include="Views\Areas\Admin\Gestion personal\" />
+    <Folder Include="Views\Areas\Admin\Noticias\" />
+    <Folder Include="Views\Areas\Estudiante\Dashboard\" />
+    <Folder Include="Views\Areas\Estudiante\Bienestar Estudiantil\" />
+    <Folder Include="Views\Areas\Estudiante\Comunicaciones\" />
+    <Folder Include="Views\Areas\Estudiante\Pagos\" />
+    <Folder Include="Views\Areas\Identity\Pages\Account\" />
+    <Folder Include="Views\Areas\Profesor\Asistencia\" />
+    <Folder Include="Views\Areas\Profesor\Calificaciones\" />
+    <Folder Include="Views\Areas\Profesor\Boletines\" />
+    <Folder Include="Views\Areas\Profesor\Dashboard\" />
+  </ItemGroup>
+
 </Project>
