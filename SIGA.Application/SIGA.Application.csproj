@@ -9,14 +9,10 @@
   <ItemGroup>
     <Folder Include="Base\" />
     <Folder Include="Contacts\Enetities\" />
-    <Folder Include="Contacts\Identity\" />
-    <Folder Include="Core\" />
-    <Folder Include="Dtos\" />
     <Folder Include="Helpers\" />
     <Folder Include="Mapping\" />
     <Folder Include="Models\" />
     <Folder Include="Services\" />
-    <Folder Include="Response\" />
   </ItemGroup>
 
   <ItemGroup>

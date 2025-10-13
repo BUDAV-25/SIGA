@@ -7,11 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Enum\" />
     <Folder Include="Helper\" />
-    <Folder Include="Seeds\" />
-    <Folder Include="Services\" />
-    <Folder Include="Register\" />
   </ItemGroup>
 
   <ItemGroup>
