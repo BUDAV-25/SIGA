@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SIRGA.Domain.Entities
+namespace SIGA.Domain.Entities
 {
     public class Asignatura
     {
