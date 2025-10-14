@@ -12,5 +12,7 @@ namespace SIGA.Domain.Entities
         public string GradeName { get; set; }
         public string Section { get; set; }
         public int StudentsLimit { get; set; } = 25;
+
+        public bool IsActive { get; set; } = true;
     }
 }

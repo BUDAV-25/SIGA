@@ -8,13 +8,17 @@ namespace SIGA.Identity.Shared.Entities
         public string LastName { get; set; }
         public char Gender { get; set; }
         public DateOnly DateOfBirth { get; set; }
-        public string? Foto { get; set; }
+        public string? Photo { get; set; }
         public string Province { get; set; }
         public string Sector { get; set; }
         public string Address { get; set; }
-        public string State { get; set; }
+
+        public bool IsActive { get; set; }
+
         public DateOnly DateOfEntry { get; set; }
         public DateOnly CreatedAt { get; set; }
-        public DateOnly LastLogin { get; set; }
+
+        public bool MustCompleteProfile { get; set; }
+        public DateTimeOffset? LastLogin { get; set; }
     }
 }
