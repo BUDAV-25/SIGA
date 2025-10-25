@@ -1,13 +1,40 @@
+using Microsoft.EntityFrameworkCore;
+using SIGA.Identity.Register;
+using SIGA.IOC.Dependencies.Entities;
+using SIGA.Persistance.Context;
+using SIGA.Web.Helpers.Base;
+using SIGA.Web.Middlewares;
+using SocialNetwork.Web.Helpers.Perfil;
+
 namespace SIGA.Web
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            //Context
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("SIGADB")));
+
+            //Inyeccion de dependencias
+            builder.Services.AllEnityDependencies();
+
+            //Dependencias de Identity
+            builder.Services.AddIdentityLayer(builder.Configuration);
+
+            builder.Services.AddIdentityService();
+
+            builder.Services.AddScoped<LoginAuthorize>();
+            builder.Services.AddScoped<ValidateUserSesion>();
+            builder.Services.AddScoped<PerfilHelper>();
+            builder.Services.AddScoped<LoadPhoto>();
+
+            builder.Services.AddSession();
 
             var app = builder.Build();
 
@@ -15,9 +42,15 @@ namespace SIGA.Web
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            using (var scope = app.Services.CreateScope())
+            {
+                await scope.ServiceProvider.RunIdentitySeeds();
+            }
+
+            app.UseSession();
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -28,9 +61,9 @@ namespace SIGA.Web
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Users}/{action=Index}/{id?}");
 
-            app.Run();
+            await app.RunAsync();
         }
     }
 }

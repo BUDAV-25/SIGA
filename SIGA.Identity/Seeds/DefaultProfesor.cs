@@ -15,14 +15,10 @@ namespace SIGA.Identity.Seeds
             applicationUser.FirstName = "Maria";
             applicationUser.LastName = "Gonzalez";
             applicationUser.Gender = 'F';
-            applicationUser.DateOfBirth = DateOnly.Parse("1990-05-15");
-            applicationUser.Province = "Santo Domingo";
-            applicationUser.Sector = "Gazcue";
-            applicationUser.Address = "Calle 2 #2";
             applicationUser.State = "Activo";
-            applicationUser.DateOfEntry = DateOnly.Parse("2022-08-01");
-            applicationUser.CreatedAt = DateOnly.FromDateTime(DateTime.Now);
-            applicationUser.LastLogin = DateOnly.FromDateTime(DateTime.Now);
+            applicationUser.DateOfEntry = DateTime.Parse("2022-08-01");
+            applicationUser.CreatedAt = DateTime.Now;
+            applicationUser.LastLogin = DateTime.Now;
             applicationUser.EmailConfirmed = true;
             applicationUser.PhoneNumberConfirmed = true;
 

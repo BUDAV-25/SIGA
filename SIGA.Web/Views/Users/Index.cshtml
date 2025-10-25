@@ -1,0 +1,139 @@
+﻿@using SIGA.Application.Dtos.Identity.Account;
+@model LoginDto
+
+@{
+    ViewData["Title"] = "Iniciar Sesión";
+}
+
+<!-- Fondo con tonos institucionales -->
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+        background: linear-gradient(135deg, #1b3b6f, #2e5984);
+        color: #f5f7fa;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+</style>
+
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="row justify-content-center w-100">
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card shadow-lg border-0 rounded-4" style="background-color: #2f4b73; color: #f0f2f5;">
+                <div class="card-body p-5">
+                    <h3 class="text-center mb-4 fw-bold">
+                        Sistema de Gestión Académica
+                    </h3>
+                    <h5 class="text-center mb-4 text-light">Iniciar Sesión</h5>
+
+                    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+                    @if (Model.HasError)
+                    {
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <p>@Model.Error</p>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
+
+                    <form method="post" asp-controller="Users" asp-action="Index">
+                        <div class="mb-4">
+                            <label asp-for="Email" class="form-label text-light">Correo Institucional</label>
+                            <input class="form-control p-3 bg-secondary-subtle text-dark border-0" asp-for="Email" placeholder="ejemplo@instituto.edu.do" required />
+                        </div>
+
+                        <div class="mb-4 position-relative">
+                            <label asp-for="Password" class="form-label text-light">Contraseña</label>
+                            <div class="input-group">
+                                <input class="form-control p-3 bg-secondary-subtle text-dark border-0" asp-for="Password" type="password" placeholder="Ingrese su contraseña" id="passwordField" required />
+                            </div>
+                        </div>
+
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe" name="RememberMe" />
+                            <label class="form-check-label text-light" for="rememberMe">Recordarme</label>
+                        </div>
+
+                        <div class="mb-4 text-center">
+                            <a asp-controller="Users" asp-action="ForgotPassword" class="text-info text-decoration-none d-block">
+                                ¿Olvidaste tu contraseña?
+                            </a>
+                            <a asp-controller="Users" asp-action="Register" class="text-info text-decoration-none d-block mt-2">
+                                Crear cuenta nueva
+                            </a>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg py-3 fw-semibold">Ingresar</button>
+                        </div>
+                    </form>
+
+                    <hr class="my-4 border-light">
+
+                    <div class="text-center">
+                        <p class="text-light mb-2">Accesos rápidos</p>
+                        <div class="d-flex justify-content-center gap-3">
+                            <a href="#" class="btn btn-outline-light rounded-circle p-2" title="Portal Estudiantil">
+                                <i class="fas fa-user-graduate"></i>
+                            </a>
+                            <a href="#" class="btn btn-outline-light rounded-circle p-2" title="Biblioteca Virtual">
+                                <i class="fas fa-book"></i>
+                            </a>
+                            <a href="#" class="btn btn-outline-light rounded-circle p-2" title="Soporte Técnico">
+                                <i class="fas fa-headset"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-4 text-center">
+                <p class="text-light">
+                    Bienvenido al <strong>Sistema Integral de Gestión Académica (SIGA)</strong>.
+                    Accede con tus credenciales institucionales para administrar tus cursos, calificaciones y reportes académicos.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Estilos adicionales -->
+<style>
+    .card {
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 18px rgba(0, 0, 0, 0.5);
+        }
+
+    .btn {
+        font-weight: bold;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+    }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+        }
+
+    .form-control:focus {
+        border-color: #7ec8e3;
+        box-shadow: 0 0 0 0.2rem rgba(126, 200, 227, 0.25);
+    }
+
+    .btn-outline-light {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+    }
+</style>
+
+<!-- FontAwesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      integrity="sha512-Fo3rlrZj/k7ujTnH2N2UG8UoX6R9G2vX1ezx8eF0lf6GpFzj6G8v1+1YpW+1bJ3K8wLhT2B1VChHf9U7Ez+3HA=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />

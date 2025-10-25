@@ -16,6 +16,10 @@ namespace SIGA.Application.Dtos.Identity.Account
         [DataType(DataType.Text)]
         public string LastName { get; set; }
 
+        [Required(ErrorMessage = "Debe colocar su Sexo.")]
+        [DataType(DataType.Text)]
+        public char Gender { get; set; }
+
         [Required(ErrorMessage = "Debe colocar su FirstName de usuario.")]
         [DataType(DataType.Text)]
         public string Username { get; set; }
@@ -36,6 +40,16 @@ namespace SIGA.Application.Dtos.Identity.Account
         [Required(ErrorMessage = "Debe colocar su telefono.")]
         [DataType(DataType.Text)]
         public string Phone { get; set; }
+
+        [Required(ErrorMessage = "Debe colocar Estado.")]
+        [DataType(DataType.Text)]
+        public string State { get; set; }
+
+        public string Role { get; set; }
+
+        public DateTime DateOfEntry { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public DateTime? LastLogin { get; set; }
 
         public string? Foto { get; set; }
         public IFormFile File { get; set; }

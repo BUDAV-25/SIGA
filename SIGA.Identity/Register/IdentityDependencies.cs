@@ -20,7 +20,7 @@ namespace SIGA.Identity.Register
 
             if (configuration.GetValue<bool>("UseInMemoryDatabase"))
             {
-                services.AddDbContext<IdentityContext>(options => options.UseInMemoryDatabase("IdendityDb"));
+                services.AddDbContext<IdentityContext>(options => options.UseInMemoryDatabase("IdentityDb"));
             }
             else
             {

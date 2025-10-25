@@ -111,7 +111,7 @@ namespace SIGA.Identity.Services
             throw new NotImplementedException();
         }
 
-        public async Task<RegisterResponse> RegisterEstudentUserAsync(RegisterRequest request, string origin)
+        public async Task<RegisterResponse> RegisterUserAsync(RegisterRequest request, string origin)
         {
             RegisterResponse response = new()
             {
@@ -141,29 +141,49 @@ namespace SIGA.Identity.Services
                 UserName = request.UserName,
                 FirstName = request.FirstName,
                 LastName = request.LastName,
+                Gender = request.Gender,
                 Email = request.Email,
+                PasswordHash = request.Password,
+                State = request.State,
                 EmailConfirmed = true
             };
 
             var result = await _userManager.CreateAsync(usuario, request.Password);
 
-            if (result.Succeeded)
+            switch (request.Role)
+            {
+                case "Estudiante":
+                    await _userManager.AddToRoleAsync(usuario, RolesEnum.Estudiante.ToString());
+                    break;
+                case "Profesor":
+                    await _userManager.AddToRoleAsync(usuario, RolesEnum.Profesor.ToString());
+                    break;
+                case "Administrador":
+                    await _userManager.AddToRoleAsync(usuario, RolesEnum.Administrador.ToString());
+                    break;
+                default:
+                    response.HasError = true;
+                    response.Error = $"El rol {request.Role} no es válido.";
+                    return response;
+            }
+
+            /*if (result.Succeeded)
             {
                 await _userManager.AddToRoleAsync(usuario, RolesEnum.Estudiante.ToString());
-                /*var verificacionURL = await _emailHelper.VerificationEmailURL(usuario, origin);
+                var verificacionURL = await _emailHelper.VerificationEmailURL(usuario, origin);
                 await _emailService.SendEmailAsync(new Infraestructure.Entities.EmailRequest()
                 {
                     To = usuario.Email,
                     Body = $"Por favor, confirme su cuenta ingresando a esta URL: {verificacionURL}",
                     Subject = "Registro de confirmacion"
-                });*/
+                });
             }
             else
             {
                 response.HasError = true;
                 response.Error = $"Ha ocurrido un error intentando registrar el usuario.";
                 return response;
-            }
+            }*/
             return response;
         }
 
